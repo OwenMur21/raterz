@@ -1,2 +1,5 @@
 .env
 virtual/
+.vscode
+raterz/__pycache__/
+pro/__pycache__/
