@@ -1,0 +1,1 @@
+web: gunicorn raterz.wsgi --log-file -
