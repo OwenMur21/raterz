@@ -5,4 +5,7 @@ from . import views
 urlpatterns = [
     url('^$', views.index, name='landing'),
 
+
+    
+
 ]
