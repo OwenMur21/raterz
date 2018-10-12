@@ -4,3 +4,4 @@ virtual/
 raterz/__pycache__/
 pro/__pycache__/
 pro/migrations/__pycache__/
+pro/migrations/
