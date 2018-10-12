@@ -50,6 +50,19 @@ class Project(models.Model):
     profile = models.ForeignKey(Profile, on_delete=models.CASCADE)
     user = models.ForeignKey(User, on_delete=models.CASCADE)
 
+    def save_pro(self):
+        self.save()
+
+    def del_pro(self):
+        self.delete()
+
+    @classmethod
+    def search_by_title(cls,search_term):
+        projects = cls.objects.filter(title__icontains=search_term)
+        return projects
+
+    
+
     def __str__(self):
                 return self.bio
 
