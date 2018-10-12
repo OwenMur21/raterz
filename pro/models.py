@@ -47,7 +47,7 @@ class Project(models.Model):
     title = models.CharField(max_length = 20)
     landing_page = models.ImageField(upload_to = 'images/')
     description = models.TextField()
-    link = models.URLField(max_length = 30)
+    link = models.URLField(max_length = 100)
     posted_on = models.DateTimeField(auto_now_add=True)
     profile = models.ForeignKey(Profile, on_delete=models.CASCADE)
     user = models.ForeignKey(User, on_delete=models.CASCADE)
