@@ -5,7 +5,6 @@ from .models import Project
 class ProjectForm(forms.ModelForm):
     class Meta:
         model = Project
-        exclude = ['user','profile']
+        exclude = ['user','profile','posted_on']
 
 
-        
