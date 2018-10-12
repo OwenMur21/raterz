@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
 from django.http  import HttpResponse
 from django.contrib.auth.decorators import login_required
-from .forms import ProjectForm
+from .forms import ProjectForm, ProfileForm
 from .models import Project, Profile
 
 
@@ -32,3 +32,23 @@ def new_project(request):
         else:
             form = ProjectForm()
     return render(request, 'new_pro.html', {"form": form})
+
+
+@login_required(login_url='/accounts/login/')
+def edit_profile(request):
+    """
+    Function that enables one to edit their profile information
+    """
+    current_user = request.user
+    profile = Profile.objects.get(user=request.user)
+    if request.method == 'POST':
+        form = ProfileForm(request.POST, request.FILES)
+        if form.is_valid():
+            profile = form.save(commit=False)
+            profile.user = current_user
+            profile.save()
+        return redirect('landing')
+    else:
+        form = ProfileForm()
+    return render(request, 'profile/edit-profile.html', {"form": form,})
+
