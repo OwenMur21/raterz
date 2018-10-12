@@ -43,7 +43,7 @@ class Project(models.Model):
     """
     Class that contains Project details
     """
-    title = models.TextField()
+    title = models.CharField(max_length = 20)
     landing_page = models.ImageField(upload_to = 'images/')
     description = models.TextField()
     link = models.URLField(max_length = 30)
