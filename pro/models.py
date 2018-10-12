@@ -64,7 +64,7 @@ class Project(models.Model):
     
 
     def __str__(self):
-                return self.bio
+                return self.title
 
 
 
