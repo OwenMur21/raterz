@@ -1,7 +1,13 @@
 {%extends 'base.html' %}
 
 {% block content %}
-
-<p>Hey</p>
-
+<div class="container-fluid">
+{% for pro in projects %}
+<div class="col-xs-6 col-sm-6 col-md-4 col-lg-4">
+  <img src="{{pro.landing_page.url}}" class="img-responsive" data-toggle="modal" data-target="#pro{{pro.id}}">
+    <center>
+      <p>{{pro.title}}</p>
+    </center>
+</div>
+</div>
 {% endblock %}
