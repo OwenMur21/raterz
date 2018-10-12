@@ -7,6 +7,7 @@ from . import views
 urlpatterns = [
     url('^$', views.index, name='landing'),
     url(r'^upload/$', views.new_project, name='newPro'),
+    url(r'^profile/edit/$', views.edit_profile, name='edit_profile'),
 
 
     
