@@ -10,7 +10,8 @@ from .models import Project, Profile
 
 @login_required(login_url='/accounts/login/')
 def index(request):
-    return render(request, 'index.html')
+    projects = Project.objects.all().order_by('-posted_on')
+    return render(request, 'index.html', locals())
 
 
 @login_required(login_url='/accounts/login/')
