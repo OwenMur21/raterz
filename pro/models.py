@@ -25,6 +25,17 @@ class Profile(models.Model):
 
     post_save.connect(save_user_profile, sender=User)
 
+    def save_profile(self):
+        self.save()
+
+    def del_profile(self):
+        self.delete()
+
+    @classmethod
+    def get_by_id(cls, id):
+            profile = Profile.objects.get(id = id)
+            return profile
+
     def __str__(self):
                 return self.bio
 
