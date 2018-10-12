@@ -1,4 +1,5 @@
 from django.contrib.auth.models import User
+import datetime as dt
 from django.db import models
 from django.db.models.signals import post_save
 from django.dispatch import receiver
@@ -47,6 +48,7 @@ class Project(models.Model):
     landing_page = models.ImageField(upload_to = 'images/')
     description = models.TextField()
     link = models.URLField(max_length = 30)
+    posted_on = models.DateTimeField(auto_now_add=True)
     profile = models.ForeignKey(Profile, on_delete=models.CASCADE)
     user = models.ForeignKey(User, on_delete=models.CASCADE)
 
