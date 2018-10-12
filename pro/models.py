@@ -12,7 +12,7 @@ class Profile(models.Model):
     profile_pic = models.ImageField(upload_to = 'images/', blank=True)
     bio = models.TextField()
     contact = models.CharField(max_length = 30, blank=True)
-    user = models.OneToOneField(User, on_delete=models.CASCADE, primary_key=True)
+    user = models.OneToOneField(User, on_delete=models.CASCADE, primary_key=True,)
 
     @receiver(post_save, sender=User)
     def create_user_profile(sender, instance, created, **kwargs):
@@ -32,8 +32,8 @@ class Profile(models.Model):
         self.delete()
 
     @classmethod
-    def get_by_id(cls, id):
-            profile = Profile.objects.get(id = id)
+    def get_by_id(cls, user_id):
+            profile = Profile.objects.get(user_id = user_id)
             return profile
 
     def __str__(self):
@@ -46,7 +46,7 @@ class Project(models.Model):
     title = models.TextField()
     landing_page = models.ImageField(upload_to = 'images/')
     description = models.TextField()
-    link = models.CharField(max_length = 30)
+    link = models.URLField(max_length = 30)
     profile = models.ForeignKey(Profile, on_delete=models.CASCADE)
     user = models.ForeignKey(User, on_delete=models.CASCADE)
 
