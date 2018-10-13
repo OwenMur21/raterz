@@ -23,7 +23,7 @@
   {% if pro.profile.profile_pic %}
   <a href="/user/{{pro.user_id}}"><p class="user"> <img src="{{pro.profile.profile_pic.url}}" id="me" class="img-circle"> By {{pro.user.username}}</p></a>
    {%else%}
-   <p class="user"> <img src="/static/img/avatar.png" id="me" class="img-circle"> By {{pro.user.username}}</p>
+   <a href="/user/{{pro.user_id}}"><p class="user"> <img src="/static/img/avatar.png" id="me" class="img-circle"> By {{pro.user.username}}</p></a>
     {% endif %}
    <p class="time">{{pro.posted_on}}</p>
     </div>

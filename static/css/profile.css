@@ -1,0 +1,72 @@
+#me{
+    width: 100px;
+
+}
+.bio{
+    text-align: center
+}
+.jumbotron{
+    margin-top: -9px;
+    border: solid #ccc 1px;
+    background-color: #f5f5f5;
+}
+.contact{
+    float: left;
+}
+.reach{
+    width: 42px;
+}
+li{
+    list-style-type: none;
+    padding: 5px;
+  
+}
+.tooltiptext1{
+    visibility: hidden;
+  
+}
+li:hover .tooltiptext1{
+    visibility: visible;
+}
+.detz{
+    float: right;
+    margin-top: -80px;
+    margin-right: 480px;
+}
+.line{
+    float: right;
+    height: 110px;
+    width: 2px;
+    background-color:#ccc;
+    margin-right: 886px;
+    margin-top: -117px;
+    border-radius: 10px;
+ 
+}
+.item{
+    background-color: black;
+    overflow: hidden;
+}
+#zote{
+    transition: all 0.3s ease 0s;
+ 
+}
+#zote:hover{
+    transform: scale(1.2);
+    opacity: 0.5;
+   
+ }
+ .view{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-family: 'Fredoka One', cursive;
+    font-size: 30px;
+    color: whitesmoke;
+    visibility: hidden;
+  
+}
+.item:hover  .view{
+    visibility:visible;
+}

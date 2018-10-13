@@ -8,7 +8,8 @@ urlpatterns = [
     url('^$', views.index, name='landing'),
     url(r'^upload/$', views.new_project, name='newPro'),
     url(r'^profile/edit/$', views.edit_profile, name='edit_profile'),
-    url(r'^viewproject/(\d+)$',views.view_project, name = 'viewpro')  
+    url(r'^viewproject/(\d+)$',views.view_project, name = 'viewpro')  ,
+    url(r'^user/(\d+)$', views.profile, name='profile'),
 
 ]
 if settings.DEBUG:
