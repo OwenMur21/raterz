@@ -65,7 +65,7 @@ class Project(models.Model):
 
     @classmethod
     def get_pro_by_id(cls, id):
-            pro = Project.objects.filter(id=id).all()
+            pro = Project.objects.get(id=id)
             return pro
 
     
