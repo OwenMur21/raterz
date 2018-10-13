@@ -1,0 +1,22 @@
+h2{
+    font-family: 'Sigmar One', cursive;
+    text-align: center
+}
+
+img{
+    width: 100%;
+}
+h3{
+    font-family: 'Lilita One', cursive;
+}
+a{
+    color: whitesmoke;
+
+}
+button{
+    margin-top: 10px;
+}
+.panel-footer{
+    font-family: 'Courgette', cursive;
+    font-size: 18px;
+}
