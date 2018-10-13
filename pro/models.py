@@ -68,7 +68,11 @@ class Project(models.Model):
             pro = Project.objects.get(id=id)
             return pro
 
-    
+    @classmethod
+    def get_pro_by_user(cls, id):
+            project = Project.objects.filter(user_id=id).all()
+            return project
+
 
     def __str__(self):
                 return self.title
