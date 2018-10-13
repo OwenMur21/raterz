@@ -52,3 +52,16 @@ def edit_profile(request):
         form = ProfileForm()
     return render(request, 'profile/edit-profile.html', {"form": form,})
 
+
+@login_required(login_url='/accounts/login/')
+def view_project(request, id):
+    """
+    Function that enables one to view specific project
+    """
+    title = "View Project"
+    projects = Project.get_pro_by_id(id= id)
+    return render(request, 'view_project.html', locals())
+
+
+
+
