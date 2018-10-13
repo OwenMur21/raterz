@@ -43,6 +43,7 @@ INSTALLED_APPS = [
      'pro.apps.ProConfig',
      'bootstrap3',
     'rest_framework',
+     'rest_framework.authtoken'
 ]
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -76,6 +77,11 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'raterz.wsgi.application'
 
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': (
+        'rest_framework.authentication.TokenAuthentication',
+    )
+}
 
 # Password validation
 # https://docs.djangoproject.com/en/1.11/ref/settings/#auth-password-validators
