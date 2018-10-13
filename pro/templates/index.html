@@ -1,19 +1,33 @@
 {%extends 'base.html' %}
+{% load static %}
+
+
+{% block styles%}
+{{block.super}}
+<link rel="stylesheet" href="{% static 'css/index.css' %}">
+<link href="https://fonts.googleapis.com/css?family=Fredoka+One" rel="stylesheet">
+{% endblock %}
+
+
 
 {% block content %}
 <div class="container-fluid">
-{% for pro in projects %}
-<div class="col-xs-6 col-sm-6 col-md-4 col-lg-4">
-  <a href="/viewproject/{{pro.id}}"><img src="{{pro.landing_page.url}}" class="img-responsive" ></a>
-    <center>
-      <p>{{pro.title}}</p>
-    </center>
-     
-</div>
-</div>
+  {% for pro in projects %}
+  <div class="col-xs-6 col-sm-6 col-md-4 col-lg-4">
+    <div class="well">
+      <div class="item">
+        <a href="/viewproject/{{pro.id}}"><img src="{{pro.landing_page.url}}" class="img-responsive"><p class="view">View Project</p></a> 
+       
+      </div>
+      <br>
+      <br>
+      <br>
+      <p>{{pro.user.username}}</p>
+
+    </div>
+  </div>
 
 
-{% endfor%}
-</div>
+  {% endfor%}
 </div>
 {% endblock%}
