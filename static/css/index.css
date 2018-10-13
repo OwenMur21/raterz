@@ -49,4 +49,26 @@ img:hover{
     font-family: 'Boogaloo', cursive;
     font-size: 18px;
     margin-left: 400px;
+    margin-top: -40px;
+}
+#me{
+    width: 50px;
+   
+}
+#me:hover{
+    opacity: 1;
+    transform: none
+}
+
+.user{
+    font-family: 'Patrick Hand', cursive;
+    font-size: 20px;
+    margin-left: 10px;
+}
+a{
+    color: black
+}
+a:hover{
+    text-decoration: none;
+    color: black;
 }
