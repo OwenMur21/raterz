@@ -63,6 +63,11 @@ class Project(models.Model):
         projects = cls.objects.filter(title__icontains=search_term)
         return projects
 
+    @classmethod
+    def get_pro_by_id(cls, id):
+            pro = Project.objects.filter(id=id).all()
+            return pro
+
     
 
     def __str__(self):
