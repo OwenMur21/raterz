@@ -59,7 +59,7 @@ def view_project(request, id):
     Function that enables one to view specific project
     """
     title = "View Project"
-    projects = Project.get_pro_by_id(id= id)
+    project = Project.get_pro_by_id(id=id)
     return render(request, 'view_project.html', locals())
 
 
