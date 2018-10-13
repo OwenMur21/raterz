@@ -5,7 +5,7 @@
 {% block styles%}
 {{block.super}}
 <link rel="stylesheet" href="{% static 'css/index.css' %}">
- <link href="https://fonts.googleapis.com/css?family=Boogaloo|Fredoka+One|Lalezar" rel="stylesheet"> 
+ <link href="https://fonts.googleapis.com/css?family=Boogaloo|Fredoka+One|Lalezar|Patrick+Hand" rel="stylesheet"> 
 {% endblock %}
 
 
@@ -19,11 +19,15 @@
         <a href="/viewproject/{{pro.id}}"><img src="{{pro.landing_page.url}}" class="img-responsive"><p class="view">View Project</p></a> 
       </div>
       <br>
-      <p class="title">{{pro.title}}</p>
+  <p class="title">{{pro.title}}</p>
+  {% if pro.profile.profile_pic %}
+  <a href="/user/{{pro.user_id}}"><p class="user"> <img src="{{pro.profile.profile_pic.url}}" id="me" class="img-circle"> By {{pro.user.username}}</p></a>
+   {%else%}
+   <p class="user"> <img src="/static/img/avatar.png" id="me" class="img-circle"> By {{pro.user.username}}</p>
+    {% endif %}
    <p class="time">{{pro.posted_on}}</p>
     </div>
   </div>
-
 
   {% endfor%}
 </div>
