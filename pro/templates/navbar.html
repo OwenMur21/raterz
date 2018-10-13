@@ -19,7 +19,7 @@
         <li><a href="/user/{{user.id}}">Profile</a></li>
          {% endif %}
       </ul>
-      <form class="navbar-form navbar-right" role="search" >
+      <form class="navbar-form navbar-right" role="search" action="{% url 'search_results' %}">
         <div class="form-group">
           <input type="text" class="form-control" placeholder="&#xF002;  Search project by title" name="pro" style="font-family:FontAwesome;text-align:center;">
         </div>
