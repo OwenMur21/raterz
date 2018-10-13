@@ -5,7 +5,7 @@
 {% block styles%}
 {{block.super}}
 <link rel="stylesheet" href="{% static 'css/index.css' %}">
-<link href="https://fonts.googleapis.com/css?family=Fredoka+One" rel="stylesheet">
+ <link href="https://fonts.googleapis.com/css?family=Boogaloo|Fredoka+One|Lalezar" rel="stylesheet"> 
 {% endblock %}
 
 
@@ -17,13 +17,10 @@
     <div class="well">
       <div class="item">
         <a href="/viewproject/{{pro.id}}"><img src="{{pro.landing_page.url}}" class="img-responsive"><p class="view">View Project</p></a> 
-       
       </div>
       <br>
-      <br>
-      <br>
-      <p>{{pro.user.username}}</p>
-
+      <p class="title">{{pro.title}}</p>
+   <p class="time">{{pro.posted_on}}</p>
     </div>
   </div>
 

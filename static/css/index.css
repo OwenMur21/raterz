@@ -1,13 +1,12 @@
 img{
     width: 100%;
     transition: all 0.3s ease 0s;
-    background-color: black;
-    background-blend-mode: color  
-    opacity: 1;
+ 
 }
 
 .well{
-    background-color: #fcfcfc;
+    background-color: #f6f6f6;
+    ;
     padding: 0;
     margin-top: 20px;
   
@@ -15,7 +14,7 @@ img{
 
 img:hover{
     transform: scale(1.2);
-    opacity: 0.2;
+    opacity: 0.5;
    
  }
 .container-fluid{
@@ -23,17 +22,17 @@ img:hover{
     margin-right: 20px;
 }
 .item{
+    background-color: black;
     overflow: hidden;
 }
 .view{
     position: absolute;
-    top: 50%;
+    top: 40%;
     left: 50%;
     transform: translate(-50%, -50%);
-    opacity: 1;
     font-family: 'Fredoka One', cursive;
     font-size: 30px;
-    color: black;
+    color: whitesmoke;
     visibility: hidden;
   
 }
@@ -41,3 +40,13 @@ img:hover{
     visibility:visible;
 }
 
+.title{
+    font-family: 'Lalezar', cursive;
+    font-size: 18px;
+    margin-left: 10px;
+}
+.time{
+    font-family: 'Boogaloo', cursive;
+    font-size: 18px;
+    margin-left: 400px;
+}
