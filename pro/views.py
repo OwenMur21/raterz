@@ -6,7 +6,7 @@ from .models import Project, Profile
 from django.contrib.auth.models import User
 from rest_framework.response import Response
 from rest_framework.views import APIView
-from .serializer import ProfSerializer
+from .serializer import ProfSerializer, ProjectSerializer
 
 
 
@@ -95,6 +95,13 @@ class ProfList(APIView):
     def get(self, request, format=None):
         all_merchprof = Profile.objects.all()
         serializers = ProfSerializer(all_merchprof, many=True)
+        return Response(serializers.data)
+
+
+class ProjectList(APIView):
+    def get(self, request, format=None):
+        all_merchproj = Project.objects.all()
+        serializers = ProjectSerializer(all_merchproj, many=True)
         return Response(serializers.data)
 
 
