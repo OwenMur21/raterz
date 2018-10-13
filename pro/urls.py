@@ -11,6 +11,7 @@ urlpatterns = [
     url(r'^viewproject/(\d+)$',views.view_project, name = 'viewpro')  ,
     url(r'^user/(\d+)$', views.profile, name='profile'),
     url(r'search/', views.search_results, name='search_results'),
+    url(r'^api/profiles/$', views.ProfList.as_view())
 
 ]
 if settings.DEBUG:

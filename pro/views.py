@@ -4,6 +4,9 @@ from django.contrib.auth.decorators import login_required
 from .forms import ProjectForm, ProfileForm
 from .models import Project, Profile
 from django.contrib.auth.models import User
+from rest_framework.response import Response
+from rest_framework.views import APIView
+from .serializer import ProfSerializer
 
 
 
@@ -87,5 +90,11 @@ def search_results(request):
     else:
         message = "You haven't searched for any term"
         return render(request, 'search.html',{"message":message})
+
+class ProfList(APIView):
+    def get(self, request, format=None):
+        all_merchprof = Profile.objects.all()
+        serializers = ProfSerializer(all_merchprof, many=True)
+        return Response(serializers.data)
 
 
