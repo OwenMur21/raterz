@@ -44,7 +44,7 @@ INSTALLED_APPS = [
      'bootstrap3',
     'rest_framework',
      'rest_framework.authtoken',
-     'star_ratings'
+   
 ]
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -71,6 +71,7 @@ TEMPLATES = [
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
                 'django.template.context_processors.media',
+              
             ],
         },
     },
