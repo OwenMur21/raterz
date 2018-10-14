@@ -28,25 +28,21 @@
      {%else%}
     <figure>
    <img src="/static/img/avatar.png" class="img-circle">
-
     <figcaption>{{profiles.user.username}}</figcaption>
-
 </figure>
     {% endif %}
  </div>
-
 </div>
 </div>
-<div class="container-fluid">
-<blockquote>
-{{profiles.bio}}
-</blockquote>
+<blockquote>{{profiles.bio}}</blockquote>
  {% for pro in pros %}
-  <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
-    <div class="item">
+  <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+  <div class="item">
 <a href="/viewproject/{{pro.id}}"><img src="{{pro.landing_page.url}}" class="img-responsive" id="zote"><p class="view">View Project</p></a> 
   </div>
+    </div>
+
 {% endfor%}
-  </div>
-</div>
+
+
 {% endblock%}
