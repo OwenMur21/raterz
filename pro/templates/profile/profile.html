@@ -5,33 +5,42 @@
 {% block styles%}
 {{block.super}}
 <link rel="stylesheet" href="{% static 'css/profile.css' %}">
- <link href="https://fonts.googleapis.com/css?family=Boogaloo|Fredoka+One|Lalezar|Patrick+Hand" rel="stylesheet"> 
+ <link href="https://fonts.googleapis.com/css?family=Boogaloo|Fredoka+One|Lalezar|Patrick+Hand|Overlock" rel="stylesheet"> 
 {% endblock %}
 
 {% block content %}
 <div class="jumbotron">
-<div class="contact">
+<div class="container">
+<div class="col-md-4">
 <ul>
 <li><img src="/static/img/cell.png" class="reach"><span class="tooltiptext1">{{profiles.contact}}</span></li>
 <li><img src="/static/img/email.png" class="reach">  <span class="tooltiptext1">{{profiles.user.email}}</span></li>
 </ul>
-</div>
-<div class="container">
-   <div class="bio">
-  {% if profiles.profile_pic %}  
-    <img src="{{profiles.profile_pic.url}}" id="me" class="img-circle">
+ </div>
+<div class="col-md-5">
+{% if profiles.profile_pic %}  
+<figure>
+    <img src="{{profiles.profile_pic.url}}" id="me">
+ 
+     <figcaption>{{profiles.user.username}}</figcaption>
+    
+</figure>
      {%else%}
-   <img src="/static/img/avatar.png" id="me"  class="img-circle">
+    <figure>
+   <img src="/static/img/avatar.png" class="img-circle">
+
+    <figcaption>{{profiles.user.username}}</figcaption>
+
+</figure>
     {% endif %}
-    <p id="user">{{profiles.user.username}}</p>
+ </div>
+
 </div>
-</div>
-<div class="detz">
-<p>{{profiles.bio}}</p>
-</div>
-<div class="line"></div>
 </div>
 <div class="container-fluid">
+<blockquote>
+{{profiles.bio}}
+</blockquote>
  {% for pro in pros %}
   <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
     <div class="item">
