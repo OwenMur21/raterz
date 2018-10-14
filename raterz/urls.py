@@ -8,6 +8,6 @@ urlpatterns = [
     url(r'',include('pro.urls')),
     url(r'^accounts/', include('registration.backends.simple.urls')),
     url(r'^logout/$', views.logout, {"next_page": '/'}),
-    url(r'^api-token-auth/', obtain_auth_token)
-    
+    url(r'^api-token-auth/', obtain_auth_token),
+    url(r'^ratings/', include('star_ratings.urls', namespace='ratings', app_name='ratings˓ → ')),  
 ]

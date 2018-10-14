@@ -43,7 +43,8 @@ INSTALLED_APPS = [
      'pro.apps.ProConfig',
      'bootstrap3',
     'rest_framework',
-     'rest_framework.authtoken'
+     'rest_framework.authtoken',
+     'star_ratings'
 ]
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
