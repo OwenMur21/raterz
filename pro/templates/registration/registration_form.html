@@ -1,5 +1,17 @@
-{%extends "registration/base.html"%} {% load bootstrap3 %}
+{%extends "registration/base.html"%} 
+{% load bootstrap3 %}
+{% load static %}
+
+{% block styles%}
+{{block.super}}
+<link rel="stylesheet" href="{% static 'css/form.css' %}">
+<link href="https://fonts.googleapis.com/css?family=Skranji" rel="stylesheet"> 
+
+{% endblock %}
+
+
 {% block content %}
+
 <div class="container">
   <div class="row">
     <!-- Empty div -->
@@ -11,7 +23,7 @@
       <div class="panel panel-default">
 
         <div class="panel-heading">
-          <h3 class="text-center">Sign Up</h3>
+          <h3 class="text-center">Welcome to Ozzy Raterz</h3>
         </div>
         <div class="panel-body">
 
@@ -19,7 +31,9 @@
             {% csrf_token %}
             {% bootstrap_form form %}
             <div class="form-group">
-              <input type="submit" class="btn btn-primary btn-sm" value="Sign Up">
+            <center>
+              <input type="submit" class="btn btn-info btn-md" value="Sign Up">
+              </center>
             </div>
 
             <input type="hidden" name="next" value="{{next}}">
