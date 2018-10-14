@@ -7,7 +7,8 @@ from django.contrib.auth.models import User
 from rest_framework.response import Response
 from rest_framework.views import APIView
 from .serializer import ProfSerializer, ProjectSerializer
-
+from .permissions import IsAuthenticatedOrReadOnly
+from rest_framework import status
 
 
 
@@ -92,16 +93,34 @@ def search_results(request):
         return render(request, 'search.html',{"message":message})
 
 class ProfList(APIView):
+    permission_classes = (IsAuthenticatedOrReadOnly,)
     def get(self, request, format=None):
         all_merchprof = Profile.objects.all()
         serializers = ProfSerializer(all_merchprof, many=True)
         return Response(serializers.data)
 
+    def post(self, request, format=None):
+        serializers = ProfSerializer(data=request.data)
+        if serializers.is_valid():
+            serializers.save()
+            return Response(serializers.data, status=status.HTTP_201_CREATED)
+        return Response(serializers.errors, status=status.HTTP_400_BAD_REQUEST)
+
 
 class ProjectList(APIView):
+    permission_classes = (IsAuthenticatedOrReadOnly,)
     def get(self, request, format=None):
         all_merchproj = Project.objects.all()
         serializers = ProjectSerializer(all_merchproj, many=True)
         return Response(serializers.data)
+
+    def post(self, request, format=None):
+        serializers = ProjectSerializer(data=request.data)
+        if serializers.is_valid():
+            serializers.save()
+            return Response(serializers.data, status=status.HTTP_201_CREATED)
+        return Response(serializers.errors, status=status.HTTP_400_BAD_REQUEST)
+
+    
 
 
