@@ -3,6 +3,7 @@ import datetime as dt
 from django.db import models
 from django.db.models.signals import post_save
 from django.dispatch import receiver
+import numpy as np
 
 
 
@@ -48,6 +49,7 @@ class Project(models.Model):
     landing_page = models.ImageField(upload_to = 'images/')
     description = models.TextField()
     link = models.URLField(max_length = 100)
+    rating = models.TextField()
     posted_on = models.DateTimeField(auto_now_add=True)
     profile = models.ForeignKey(Profile, on_delete=models.CASCADE)
     user = models.ForeignKey(User, on_delete=models.CASCADE)
@@ -73,9 +75,77 @@ class Project(models.Model):
             project = Project.objects.filter(user_id=id).all()
             return project
 
+    def average_design(self):
+       all_ratings = list(map(lambda x: x.rating, self.designrating_set.all()))
+       return np.mean(all_ratings)
+
+    def average_usability(self):
+       all_ratings = list(map(lambda x: x.rating, self.usabilityrating_set.all()))
+       return np.mean(all_ratings)
+
+    def average_content(self):
+       all_ratings = list(map(lambda x: x.rating, self.contentrating_set.all()))
+       return np.mean(all_ratings)
+
 
     def __str__(self):
                 return self.title
 
+class DesignRating(models.Model):
+   RATING_CHOICES = (
+       (1, '1'),
+       (2, '2'),
+       (3, '3'),
+       (4, '4'),
+       (5, '5'),
+       (6, '6'),
+       (7, '7'),
+       (8, '8'),
+       (9, '9'),
+       (10, '10')
+   )
+   project = models.ForeignKey(Project)
+   pub_date = models.DateTimeField(auto_now=True)
+   profile = models.ForeignKey(Profile)
+   comment = models.CharField(max_length=200)
+   rating = models.IntegerField(choices=RATING_CHOICES, default=0)
+
+class ContentRating(models.Model):
+   RATING_CHOICES = (
+       (1, '1'),
+       (2, '2'),
+       (3, '3'),
+       (4, '4'),
+       (5, '5'),
+       (6, '6'),
+       (7, '7'),
+       (8, '8'),
+       (9, '9'),
+       (10, '10')
+   )
+   project = models.ForeignKey(Project)
+   pub_date = models.DateTimeField(auto_now=True)
+   profile = models.ForeignKey(Profile)
+   comment = models.CharField(max_length=200)
+   rating = models.IntegerField(choices=RATING_CHOICES, default=0)
+
+class UsabilityRating(models.Model):
+   RATING_CHOICES = (
+       (1, '1'),
+       (2, '2'),
+       (3, '3'),
+       (4, '4'),
+       (5, '5'),
+       (6, '6'),
+       (7, '7'),
+       (8, '8'),
+       (9, '9'),
+       (10, '10')
+   )
+   project = models.ForeignKey(Project)
+   pub_date = models.DateTimeField(auto_now=True)
+   profile = models.ForeignKey(Profile)
+   comment = models.CharField(max_length=200)
+   rating = models.IntegerField(choices=RATING_CHOICES, default=0)
 
 
