@@ -1,4 +1,5 @@
 {%extends 'base.html' %}
+
 {% load static %}
 
 {% block styles%}
@@ -21,61 +22,9 @@
         <hr>
         <h3>Description</h3>
         <p>{{project.description}}</p>
-           <h3>Rating</h3>
-         <div class="form-group">
-                      <select id="criteria-select" class="form-control custom-select">
-                          <option value="0" style="font-size: 13px;" disabled selected>Select Criteria</option>
-                          <option value="design" style="font-size: 13px;">Design</option>
-                          <option value="usability" style="font-size: 13px;">Usability</option>
-                          <option value="content" style="font-size: 13px;">Content</option>
-                        </select>
-                  </div>
-                  <div class="form-group">
-                    <input type="number" style="font-size: 13px;" id="rating-control" class="form-control" step="0.1" max="10" placeholder="Rate 1-10" disabled>
-                  </div>
-                  <table class="table table-striped" style="font-size:14.5px !important;">
-                    <thead>
-                      <tr>
-                        <th>Criteria</th>
-                        <th>Rating</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      <tr class="design">
-                        <td>Design</td>
-                        <td>
-                          <div class="stars-outer">
-                            <div class="stars-inner"></div>
-                          </div>
-                          <span class="number-rating"></span>
-                        </td>
-
-                      </tr>
-                      <tr class="usability">
-                          <td>Usability</td>
-                          <td>
-                            <div class="stars-outer">
-                              <div class="stars-inner"></div>
-                            </div>
-                            <span class="number-rating"></span>
-                          </td>
-  
-                        </tr>
-                        <tr class="content">
-                            <td>Content</td>
-                            <td>
-                              <div class="stars-outer">
-                                <div class="stars-inner"></div>
-                              </div>
-                              <span class="number-rating"></span>
-                            </td>
-    
-                          </tr>
-                    </tbody>
-                  </table>
-    </div>
+      
      
-        <div class="panel panel-default">
+   <div class="panel panel-default">
         <center>
             <div class="panel-footer">Created by <strong>{{project.user.username}}</strong></div>
             </center>

@@ -27,7 +27,7 @@ img:hover{
 }
 .view{
     position: absolute;
-    top: 40%;
+    top: 30%;
     left:50%;
     transform: translate(-50%, -50%);
     font-family: 'Fredoka One', cursive;
@@ -71,4 +71,10 @@ a{
 a:hover{
     text-decoration: none;
     color: black;
+}
+form{
+    width: 100px;
+}
+ul{
+   text-align: center;
 }

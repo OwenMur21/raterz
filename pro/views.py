@@ -16,6 +16,9 @@ from rest_framework import status
 @login_required(login_url='/accounts/login/')
 def index(request):
     projects = Project.objects.all().order_by('-posted_on')
+    form = DesignForm()
+    form = UsabilityForm()
+    form = ContentForm()
     return render(request, 'index.html', locals())
 
 
@@ -65,6 +68,7 @@ def view_project(request, id):
     """
     title = "View Project"
     project = Project.get_pro_by_id(id=id)
+  
     return render(request, 'view_project.html', locals())
 
 
@@ -123,8 +127,8 @@ class ProjectList(APIView):
 
     
 @login_required(login_url='/accounts/login/')
-def add_design(request, project_id):
-   project = get_object_or_404(Project, pk=project_id)
+def add_design(request, id):
+   project = get_object_or_404(Project, pk=id)
    if request.method == 'POST':
        form = DesignForm(request.POST)
        if form.is_valid():
@@ -132,17 +136,16 @@ def add_design(request, project_id):
            rate.project = project
            rate.user_name = request.user
            rate.profile = request.user.profile
-
            rate.save()
-       return redirect('viewpro')
+       return redirect('landing')
    else:
        form = DesignForm()
 
-   return render(request, 'view_project.html',{'form': form})
+   return render(request, 'index.html',{'form': form})
 
 @login_required(login_url='/accounts/login/')
-def add_usability(request, project_id):
-   project = get_object_or_404(Project, pk=project_id)
+def add_usability(request, id):
+   project = get_object_or_404(Project, pk=id)
    if request.method == 'POST':
        form = UsabilityForm(request.POST)
        if form.is_valid():
@@ -152,15 +155,15 @@ def add_usability(request, project_id):
            rate.profile = request.user.profile
 
            rate.save()
-       return redirect('viewpro')
+       return redirect('landing')
    else:
-       form = DesignForm()
+       form = UsabilityForm()
 
-   return render(request, 'view_project.html',{'form': form})
+   return render(request, 'index.html',{'form': form})
 
 @login_required(login_url='/accounts/login/')
-def add_content(request, project_id):
-   project = get_object_or_404(Project, pk=project_id)
+def add_content(request, id):
+   project = get_object_or_404(Project, pk=id)
    if request.method == 'POST':
        form = ContentForm(request.POST)
        if form.is_valid():
@@ -170,9 +173,9 @@ def add_content(request, project_id):
            rate.profile = request.user.profile
 
            rate.save()
-       return redirect('viewpro')
+       return redirect('landing')
    else:
-       form = DesignForm()
+       form = ContentForm()
 
-   return render(request, 'view_project.html',{'form': form})
+   return render(request, 'index.html',{'form': form})
 

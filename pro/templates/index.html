@@ -1,4 +1,5 @@
 {%extends 'base.html' %}
+{% load bootstrap3 %}
 {% load static %}
 
 
@@ -22,6 +23,35 @@
       </div>
       <br>
   <p class="title">{{pro.title}}</p>
+  <ul class="list-inline">
+     <li class="list-inline-item">
+ <h4>Rate By Design</h4>
+<form  action="/project/{{pro.id}}/review_design/" method="POST">
+   {%csrf_token%}
+   {% bootstrap_form form layout='inline' %}
+   <input type="submit" value="Rate">
+ </form>
+   <p>{{ pro.rating.count }} <p style="color: green;">Design</h5>  average = {{ pro.average_design | floatformat }} </p>
+   </li>
+    <li class="list-inline-item">
+ <h4>Rate By Content</h4>
+<form  action="/project/{{pro.id}}/review_content/" method="POST">
+   {%csrf_token%}
+   {% bootstrap_form form layout='inline' %}
+   <input type="submit" value="Rate">
+ </form>
+   <p>{{ pro.rating.count }} <p style="color: green;">Content</h5>  average = {{ pro.average_content | floatformat }} </p>
+      </li>
+  <li class="list-inline-item">
+ <h4>Rate By Usability</h4>
+<form  action="/project/{{pro.id}}/review_usability/" method="POST">
+   {%csrf_token%}
+   {% bootstrap_form form layout='inline' %}
+   <input type="submit" value="Rate">
+ </form>
+   <p>{{ pro.rating.count }} <p style="color: green;">Usability</h5>  average = {{ pro.average_usability | floatformat }} </p>
+    </li>
+    </ul>
   {% if pro.profile.profile_pic %}
   <a href="/user/{{pro.user_id}}"><p class="user"> <img src="{{pro.profile.profile_pic.url}}" id="me" class="img-circle"> By {{pro.user.username}}</p></a>
  
