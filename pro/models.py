@@ -107,7 +107,6 @@ class DesignRating(models.Model):
    project = models.ForeignKey(Project)
    pub_date = models.DateTimeField(auto_now=True)
    profile = models.ForeignKey(Profile)
-   comment = models.CharField(max_length=200)
    rating = models.IntegerField(choices=RATING_CHOICES, default=0)
 
 class ContentRating(models.Model):
@@ -126,7 +125,6 @@ class ContentRating(models.Model):
    project = models.ForeignKey(Project)
    pub_date = models.DateTimeField(auto_now=True)
    profile = models.ForeignKey(Profile)
-   comment = models.CharField(max_length=200)
    rating = models.IntegerField(choices=RATING_CHOICES, default=0)
 
 class UsabilityRating(models.Model):
@@ -145,7 +143,6 @@ class UsabilityRating(models.Model):
    project = models.ForeignKey(Project)
    pub_date = models.DateTimeField(auto_now=True)
    profile = models.ForeignKey(Profile)
-   comment = models.CharField(max_length=200)
    rating = models.IntegerField(choices=RATING_CHOICES, default=0)
 
 
