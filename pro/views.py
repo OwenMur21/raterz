@@ -1,7 +1,7 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from django.http  import HttpResponse
 from django.contrib.auth.decorators import login_required
-from .forms import ProjectForm, ProfileForm
+from .forms import ProjectForm, ProfileForm, DesignForm, ContentForm, UsabilityForm
 from .models import Project, Profile
 from django.contrib.auth.models import User
 from rest_framework.response import Response
@@ -122,5 +122,57 @@ class ProjectList(APIView):
         return Response(serializers.errors, status=status.HTTP_400_BAD_REQUEST)
 
     
+@login_required(login_url='/accounts/login/')
+def add_design(request, project_id):
+   project = get_object_or_404(Project, pk=project_id)
+   if request.method == 'POST':
+       form = DesignForm(request.POST)
+       if form.is_valid():
+           rate = form.save(commit=False)
+           rate.project = project
+           rate.user_name = request.user
+           rate.profile = request.user.profile
 
+           rate.save()
+       return redirect('viewpro')
+   else:
+       form = DesignForm()
+
+   return render(request, 'view_project.html',{'form': form})
+
+@login_required(login_url='/accounts/login/')
+def add_usability(request, project_id):
+   project = get_object_or_404(Project, pk=project_id)
+   if request.method == 'POST':
+       form = UsabilityForm(request.POST)
+       if form.is_valid():
+           rate = form.save(commit=False)
+           rate.project = project
+           rate.user_name = request.user
+           rate.profile = request.user.profile
+
+           rate.save()
+       return redirect('viewpro')
+   else:
+       form = DesignForm()
+
+   return render(request, 'view_project.html',{'form': form})
+
+@login_required(login_url='/accounts/login/')
+def add_content(request, project_id):
+   project = get_object_or_404(Project, pk=project_id)
+   if request.method == 'POST':
+       form = ContentForm(request.POST)
+       if form.is_valid():
+           rate = form.save(commit=False)
+           rate.project = project
+           rate.user_name = request.user
+           rate.profile = request.user.profile
+
+           rate.save()
+       return redirect('viewpro')
+   else:
+       form = DesignForm()
+
+   return render(request, 'view_project.html',{'form': form})
 
